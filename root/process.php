@@ -84,13 +84,29 @@ if (isset($_POST['login'])) {
 	trim(extract($_POST));
 	$check = $dbh->query("SELECT * FROM category WHERE cat_name = '$cat_name' ")->fetchColumn(); 
 	if (!$check) {
-		
+		$sql = $dbh->query("INSERT INTO category VALUES(NULL, '$cat_name') ");
+		if ($sql) {
+			echo "<script>
+            alert('category inserted Successfully');
+            window.location = '".HOME_URL."?category';
+            </script>";
+		}
 	}else{
 		echo "<script>
             alert('This category already exist');
-            window.location = '".SITE_URL."?users';
+            window.location = '".HOME_URL."?category';
             </script>";
 	}
+}elseif (isset($_POST['drug_btn'])) {
+	trim(extract($_POST));
+// `drug_id`, `cat_id`, `drug_name`, `drug_qnty`, `drug_buying_price`, `drug_selling_price`, `manufacturer_name`, `manufacturer_phone`, `manufacturer_location`, `expiry_date`
+	$sql = $dbh->query("INSERT INTO drug_store VALUES(NULL,'$cat_id','$drug_name','$drug_qnty','$drug_buying_price','$drug_selling_price','$manufacturer_name','$manufacturer_phone','$manufacturer_location','$expiry_date') ");
+	if ($sql) {
+			echo "<script>
+            alert('Drug inserted Successfully');
+            window.location = '".HOME_URL."?category';
+            </script>";
+		}
 }
 
 

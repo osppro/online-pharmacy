@@ -30,15 +30,127 @@ if ($interface == 'admin') {
                 </thead>
                 <tbody>
                 <?php $cate = $dbh->query("SELECT * FROM category ");
+                $x = 1;
                 while ($row = $cate->fetch(PDO::FETCH_OBJ)) { ?>
                   <tr>
+                    <td><?=$x++; ?></td>
                     <td><?=$row->cat_name; ?></td>
-                    <td>Drugs</td>
+                    <td><a href="?add-drug=<?=base64_encode($row->cat_id); ?>" class="btn btn-primary">Add Drug</a> <br> 
+                      <?php $dt = $dbh->query("SELECT * FROM drug_store WHERE cat_id = '".$row->cat_id."' ");
+                      $a = 1; 
+                      while ($rx = $dt->fetch(PDO::FETCH_OBJ)) { ?>
+                         <h6><span class="badge bg-primary"><?=$a++; ?></span>. <?=$rx->drug_name; ?></h6>
+                         <hr>
+                        <!-- `drug_id`, `cat_id`, `drug_name`, `drug_qnty`, `drug_buying_price`, `drug_selling_price`, `manufacturer_name`, `manufacturer_phone`, `manufacturer_location`, `expiry_date` -->
+                         <p class="card-body alert alert-primary">
+                          Drug: <?=$rx->drug_name; ?><br>
+                          Qnty: <?=$rx->drug_qnty; ?><br>
+                          Buying Price: <?=$rx->drug_buying_price; ?><br>
+                          Selling Price: <?=$rx->drug_selling_price; ?><br>
+                          Manufucturer: <?=$rx->manufacturer_name; ?><br>
+                          Manufucturr Phone: <?=$rx->manufacturer_phone; ?><br>
+                          Manufucturer Address: <?=$rx->manufacturer_location; ?><br>
+                          Expiry Date: <?=$rx->expiry_date; ?>
+                         </p>
+                      <?php } ?>
+                    </td>
                   </tr>
                 <?php } ?>
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+  <?php }elseif (isset($_REQUEST['add-drug'])) {
+    $cat_id = base64_decode($_GET['add-drug']);
+    $res = $dbh->query("SELECT * FROM category WHERE cat_id = '$cat_id' ");
+    $ro = $res->fetch(PDO::FETCH_OBJ);
+   ?>
+     <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Drug Store Form</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="<?=HOME_URL; ?>">Home</a></li>
+          <li class="breadcrumb-item">Drug Store</li>
+          <li class="breadcrumb-item active">Form</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Category Form</h5>
+              <!-- General Form Elements -->
+              <form method="POST" action="">
+                <input type="hidden" value="<?=$ro->cat_id; ?>" name="cat_id">
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Category Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" readonly value="<?=$ro->cat_name; ?>" name="cat_name" required class="form-control">
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Drug Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="drug_name" required class="form-control">
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Drug Quantity</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="drug_qnty" required class="form-control">
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Drug Buying Price</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="drug_buying_price" required class="form-control">
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Drug Selling Price</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="drug_selling_price" required class="form-control">
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Manufucturer's Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="manufacturer_name" required class="form-control">
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Manufucturer Phone</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="manufacturer_phone" required class="form-control">
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Manufucturer Address</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="manufacturer_location" required class="form-control">
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Drug Expiry Date</label>
+                  <div class="col-sm-10">
+                    <input type="date" min="<?=$today; ?>" name="expiry_date" required class="form-control">
+                  </div>
+                </div>
+                <!-- `drug_id`, `cat_id`, `drug_name`, `drug_qnty`, `drug_buying_price`, `drug_selling_price`, `manufacturer_name`, `manufacturer_phone`, `manufacturer_location`, `expiry_date` -->
+                <div class="row mb-3">
+                  <div class="col-sm-10">
+                    <button type="submit" name="drug_btn" class="btn btn-primary">Submit Form</button>
+                  </div>
+                </div>
+              </form><!-- End General Form Elements -->
             </div>
           </div>
         </div>
@@ -99,7 +211,6 @@ if ($interface == 'admin') {
   </main><!-- End #main -->
   <?php }elseif (isset($_REQUEST['add-category'])) { ?>
     <main id="main" class="main">
-
     <div class="pagetitle">
       <h1>Category Form</h1>
       <nav>
@@ -136,7 +247,6 @@ if ($interface == 'admin') {
         </div>
       </div>
     </section>
-
   </main><!-- End #main -->
   <?php }elseif (isset($_REQUEST[''])) { ?>
 
