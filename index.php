@@ -34,8 +34,7 @@
             <div class="card info-card sales-card bg-primary">
               <h2 class="text-center text-white">Online Drug Store <span style="float: right; font-size: 14px;"><a href="login" class="btn btn-warning">Login</a></span></h2>
             </div>
-
-         <?php $cate = $dbh->query("SELECT * FROM category ");
+            <?php $cate = $dbh->query("SELECT * FROM category ");
             $x = 1;
             while ($row = $cate->fetch(PDO::FETCH_OBJ)) { ?>
             <!-- Sales Card -->
@@ -55,13 +54,13 @@
                 </div>
               </div>
             </div>
-          <?php } ?>
-
+            <?php } ?>
           </div>
         </div><!-- End Left side columns -->
       </div>
     </section>
-  </main><!-- End #main -->
+  </main>
+  <!-- End #main -->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
