@@ -169,6 +169,12 @@ if (empty($_SESSION['userid'])) {
       </li><!-- End Dashboard Nav -->
       <?php if ($interface == 'admin') { ?>
       <li class="nav-item">
+        <a class="nav-link collapsed" href="?users">
+          <i class="bi bi-person"></i>
+          <span>Users</span>
+        </a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link collapsed" href="?category">
           <i class="bi bi-file-earmark"></i>
           <span>Category</span>
@@ -183,3 +189,10 @@ if (empty($_SESSION['userid'])) {
       <!-- End Blank Page Nav -->
     </ul>
   </aside><!-- End Sidebar-->
+
+<?php 
+include 'add-category.php'; 
+
+
+
+?>
