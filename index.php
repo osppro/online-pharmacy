@@ -25,20 +25,15 @@
 </head>
 <body>
   <main>
-    
-
     <section class="section dashboard">
       <div class="row">
-
         <!-- Left side columns -->
         <div class="col-lg-12 col-md-12">
           <div class="row">
-
             <div class="card info-card sales-card bg-primary">
-              <h2 class="text-center text-white">Online Drug Store <span style="float: right; font-size: 14px;"><a href="" class="btn btn-warning">Login</a></span></h2>
+              <h2 class="text-center text-white">Online Drug Store <span style="float: right; font-size: 14px;"><a href="login" class="btn btn-warning">Login</a></span></h2>
             </div>
             <!-- Sales Card -->
-
             <div class="col-xxl-2 col-md-3">
               <div class="card info-card sales-card">
                 <div class="card-body">
@@ -54,9 +49,6 @@
                 </div>
               </div>
             </div>
-
-
-
             <div class="col-xxl-2 col-md-3">
               <div class="card info-card sales-card">
                 <div class="card-body">
@@ -72,11 +64,8 @@
                 </div>
               </div>
             </div>
-
-
           </div>
         </div><!-- End Left side columns -->
-
       </div>
     </section>
   </main><!-- End #main -->
