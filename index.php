@@ -40,7 +40,7 @@
                   <h5 class="card-title">Drug <span>| Pain Killers</span></h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
+                     <span style="font-size: 10px; ">@Ugx.10,000</span>
                     </div>
                     <div class="ps-3">
                       <h6><a href="">Pain Killers</a></h6>
@@ -55,7 +55,7 @@
                   <h5 class="card-title">Drug <span>| Pain Killers</span></h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
+                      <span style="font-size: 10px; ">@Ugx.30,000</span>
                     </div>
                     <div class="ps-3">
                       <h6><a href="">Pain Killers</a></h6>
