@@ -106,9 +106,14 @@ if (isset($_POST['login'])) {
             alert('Drug inserted Successfully');
             window.location = '".HOME_URL."?category';
             </script>";
-		}
+	}
+}elseif(isset($_POST['submit_order_btn'])){
+	trim(extract($_POST));
+	//`order_id`, `drug_id`, `customer_name`, `customer_phone`, `customer_location`, `order_date`
+	$sql = $dbh->query("INSERT INTO orders VALUES(NULL,'$drug_id', '$customer_name','$customer_phone','$customer_location','$today') ");
+	if ($sql) {
+		
+	}
 }
-
-
 
 ?>

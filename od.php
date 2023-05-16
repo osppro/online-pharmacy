@@ -44,22 +44,24 @@
             <div class="col-lg-12 col-md-12">
               <div class="card info-card sales-card">
                 <div class="card-body">
-                  <h5 class="card-title">Drug <span>| <?=$rx->drug_name; ?></span></h5>
+                  <h5 class="card-title">Drug <span>| <?=$rx->drug_name; ?> @ugx.<?=$rx->drug_selling_price; ?></span></h5>
                   <div class="d-flex align-items-center">
                   <!-- `order_id`, `drug_id`, `customer_name`, `customer_phone`, `customer_location`, `order_date` -->
                    <form class="" method="POST" action="">
+                    <input type="hidden" value="<?=$rx->drug_id; ?>" name="drug_id">
                      <div class="form-group">
                        <label>Customer Name</label>
                        <input type="text" name="customer_name" class="form-control" required>
                      </div>
                      <div class="form-group">
                        <label>Customer Phone</label>
-                       <input type="text" name="customer_name" class="form-control" required>
+                       <input type="text" name="customer_phone" class="form-control" required>
                      </div>
                      <div class="form-group">
                        <label>Customer Location</label>
-                       <input type="text" name="customer_name" class="form-control" required>
+                       <input type="text" name="customer_location" class="form-control" required>
                      </div>
+                     <br>
                      <div class="form-group">
                        <button class="btn btn-primary" name="submit_order_btn" type="submit">Submit Order</button>
                      </div>
