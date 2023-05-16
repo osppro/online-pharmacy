@@ -36,53 +36,40 @@
                 Online Drug Store <span style="float: right; font-size: 14px;"><a href="login" class="btn btn-warning">Login</a></span></h2>
             </div>
             <?php 
-            $id = base64_decode($_GET['client']);
-            $cate = $dbh->query("SELECT * FROM category WHERE cat_id = '".$id."' ");
-            $x = 1;
-            while ($row = $cate->fetch(PDO::FETCH_OBJ)) { ?>
+            $id = base64_decode($_GET['a']);
+            $cate = $dt = $dbh->query("SELECT * FROM drug_store WHERE drug_id = '$id' ");
+            $rx = $cate->fetch(PDO::FETCH_OBJ);
+            ?>
+       
             <!-- Sales Card -->
             <div class="col-lg-12 col-md-12">
               <div class="card info-card sales-card">
                 <div class="card-body">
-                  <h5 class="card-title">Drug Category <span>| <?=$row->cat_name; ?></span></h5>
+                  <h5 class="card-title">Drug <span>| <?=$rx->drug_name; ?></span></h5>
                   <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <?php $drugs = $dbh->query("SELECT * FROM drug_store WHERE cat_id = '".$row->cat_id."' ")->rowCount(); ?>
-                     <span style="font-size: 10px; "><?=number_format($drugs);?>-Drugs</span>
-                    </div>
-                    <div class="ps-3">
-                      <h6><a><?=$row->cat_name; ?></a></h6>
+                  <!-- `order_id`, `drug_id`, `customer_name`, `customer_phone`, `customer_location`, `order_date` -->
+                   <form class="" method="POST" action="">
+                     <div class="form-group">
+                       <label>Customer Name</label>
+                       <input type="text" name="customer_name" class="form-control" required>
                      </div>
+                     <div class="form-group">
+                       <label>Customer Phone</label>
+                       <input type="text" name="customer_name" class="form-control" required>
+                     </div>
+                     <div class="form-group">
+                       <label>Customer Location</label>
+                       <input type="text" name="customer_name" class="form-control" required>
+                     </div>
+                     <div class="form-group">
+                       <button class="btn btn-primary" name="submit_order_btn" type="submit">Submit Order</button>
+                     </div>
+                   </form>
                   </div>
-
-                    <div class="row">
-                       <div class="col-md-6">
-                         <h4></h4>
-                       </div>
-                       <div class="col-md-6">
-                        <?php $dt = $dbh->query("SELECT * FROM drug_store WHERE cat_id = '".$row->cat_id."' ");
-                      $a = 1; 
-                      if ($dt->rowCount() > 0) {
-                      while ($rx = $dt->fetch(PDO::FETCH_OBJ)) { ?>
-                         <h6><span class="badge bg-primary"><?=$a++; ?></span>. <?=$rx->drug_name; ?></h6>
-                         <hr>
-                        <!-- `drug_id`, `cat_id`, `drug_name`, `drug_qnty`, `drug_buying_price`, `drug_selling_price`, `manufacturer_name`, `manufacturer_phone`, `manufacturer_location`, `expiry_date` -->
-                         <p class="card-body alert alert-primary">
-                          Drug: <?=$rx->drug_name; ?><br>
-                          Price: <strong>UGX.<?=number_format($rx->drug_selling_price); ?></strong><br>
-                          <a href="od?a=<?=base64_encode($rx->drug_id); ?>" class="btn btn-primary">Order Now</a>
-                         </p>
-                      <?php }}else{ ?>
-                        <div>
-                          <h5 class="alert alert-danger text-center">No Drug Found</h5>
-                        </div>
-                      <?php } ?>
-                       </div>
-                     </div>
                 </div>
               </div>
             </div>
-            <?php } ?>
+
           </div>
         </div><!-- End Left side columns -->
       </div>
