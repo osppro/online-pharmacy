@@ -1,3 +1,4 @@
+<?php include 'root/config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,37 +34,28 @@
             <div class="card info-card sales-card bg-primary">
               <h2 class="text-center text-white">Online Drug Store <span style="float: right; font-size: 14px;"><a href="login" class="btn btn-warning">Login</a></span></h2>
             </div>
+
+         <?php $cate = $dbh->query("SELECT * FROM category ");
+            $x = 1;
+            while ($row = $cate->fetch(PDO::FETCH_OBJ)) { ?>
             <!-- Sales Card -->
             <div class="col-xxl-2 col-md-3">
               <div class="card info-card sales-card">
                 <div class="card-body">
-                  <h5 class="card-title">Drug <span>| Pain Killers</span></h5>
+                  <h5 class="card-title">Drug Category <span>| <?=$row->cat_name; ?></span></h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                      <span style="font-size: 10px; ">@Ugx.10,000</span>
                     </div>
                     <div class="ps-3">
-                      <h6><a href="">Pain Killers</a></h6>
+                      <h6><a href=""><?=$row->cat_name; ?></a></h6>
                      </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-xxl-2 col-md-3">
-              <div class="card info-card sales-card">
-                <div class="card-body">
-                  <h5 class="card-title">Drug <span>| Pain Killers</span></h5>
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <span style="font-size: 10px; ">@Ugx.30,000</span>
-                    </div>
-                    <div class="ps-3">
-                      <h6><a href="">Pain Killers</a></h6>
-                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <?php } ?>
+
           </div>
         </div><!-- End Left side columns -->
       </div>
