@@ -49,6 +49,7 @@
                     </div>
                     <div class="ps-3">
                       <h6><a href="order?client=<?=base64_encode($row->cat_id); ?>"><?=$row->cat_name; ?></a></h6>
+                      <a href="order?client=<?=base64_encode($row->cat_id); ?>" class="btn btn-danger">View Drugs</a>
                      </div>
                   </div>
                 </div>

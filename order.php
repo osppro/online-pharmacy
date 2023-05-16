@@ -35,7 +35,9 @@
               <h2 class="text-center text-white"><span><a style="float: left; font-size: 14px;" class="btn btn-warning" href="<?=SITE_URL; ?>"><<-- Back</a></span> 
                 Online Drug Store <span style="float: right; font-size: 14px;"><a href="login" class="btn btn-warning">Login</a></span></h2>
             </div>
-            <?php $cate = $dbh->query("SELECT * FROM category ");
+            <?php 
+            $id = base64_decode($_GET['client']);
+            $cate = $dbh->query("SELECT * FROM category WHERE cat_id = '".$id."' ");
             $x = 1;
             while ($row = $cate->fetch(PDO::FETCH_OBJ)) { ?>
             <!-- Sales Card -->
@@ -49,9 +51,35 @@
                      <span style="font-size: 10px; "><?=number_format($drugs);?>-Drugs</span>
                     </div>
                     <div class="ps-3">
-                      <h6><a href="order?client=<?=number_format($row->cat_id); ?>"><?=$row->cat_name; ?></a></h6>
+                      <h6><a><?=$row->cat_name; ?></a></h6>
                      </div>
                   </div>
+
+                    <div class="row">
+                       <div class="col-md-6">
+                         <h4></h4>
+                       </div>
+                       <div class="col-md-6">
+                        <?php $dt = $dbh->query("SELECT * FROM drug_store WHERE cat_id = '".$row->cat_id."' ");
+                      $a = 1; 
+                      if ($dt->rowCount() > 0) {
+                      while ($rx = $dt->fetch(PDO::FETCH_OBJ)) { ?>
+                         <h6><span class="badge bg-primary"><?=$a++; ?></span>. <?=$rx->drug_name; ?></h6>
+                         <hr>
+                        <!-- `drug_id`, `cat_id`, `drug_name`, `drug_qnty`, `drug_buying_price`, `drug_selling_price`, `manufacturer_name`, `manufacturer_phone`, `manufacturer_location`, `expiry_date` -->
+                         <p class="card-body alert alert-primary">
+                          Drug: <?=$rx->drug_name; ?><br>
+                          Price: <strong>UGX.<?=number_format($rx->drug_selling_price); ?></strong>
+                         </p>
+                      <?php }}else{ ?>
+                        <div>
+                          <h5 class="alert alert-danger text-center">No Drug Found</h5>
+                        </div>
+                      <?php } ?>
+                       </div>
+                     </div>
+
+
                 </div>
               </div>
             </div>
