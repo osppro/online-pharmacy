@@ -80,7 +80,19 @@ if (isset($_POST['login'])) {
         }
     }
 
+}elseif (isset($_POST['category_btn'])) {
+	trim(extract($_POST));
+	$check = $dbh->query("SELECT * FROM category WHERE cat_name = '$cat_name' ")->fetchColumn(); 
+	if (!$check) {
+		
+	}else{
+		echo "<script>
+            alert('This category already exist');
+            window.location = '".SITE_URL."?users';
+            </script>";
+	}
 }
+
 
 
 ?>

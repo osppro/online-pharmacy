@@ -183,16 +183,8 @@ if (empty($_SESSION['userid'])) {
   <?php }elseif ($interface == 'moderator') { ?>
     
   <?php }else{ ?>
-
+    
   <?php } ?>
-
       <!-- End Blank Page Nav -->
     </ul>
   </aside><!-- End Sidebar-->
-
-<?php 
-include 'add-category.php'; 
-
-
-
-?>

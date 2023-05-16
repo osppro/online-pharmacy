@@ -18,7 +18,7 @@ if ($interface == 'admin') {
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Category, <a href="#add-category" data-toggle="modal" data-backdrop="static" data-keyboard="false" class="btn btn-primary">Add Category</a></h5>
+              <h5 class="card-title">Category, <a href="?add-category" class="btn btn-primary">Add Category</a></h5>
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
@@ -97,8 +97,47 @@ if ($interface == 'admin') {
       </div>
     </section>
   </main><!-- End #main -->
-  <?php }elseif (isset($_REQUEST[''])) { ?>
+  <?php }elseif (isset($_REQUEST['add-category'])) { ?>
+    <main id="main" class="main">
 
+    <div class="pagetitle">
+      <h1>Category Form</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="<?=HOME_URL; ?>">Home</a></li>
+          <li class="breadcrumb-item">Category</li>
+          <li class="breadcrumb-item active">Form</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Category Form</h5>
+              <!-- General Form Elements -->
+              <form method="POST" action="">
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Category Name</label>
+                  <div class="col-sm-10">
+                    <input type="text" name="cat_name" required class="form-control">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-10">
+                    <button type="submit" name="category_btn" class="btn btn-primary">Submit Form</button>
+                  </div>
+                </div>
+              </form><!-- End General Form Elements -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
   <?php }elseif (isset($_REQUEST[''])) { ?>
 
   <?php }elseif (isset($_REQUEST[''])) { ?>
