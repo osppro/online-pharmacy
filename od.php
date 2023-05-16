@@ -1,4 +1,7 @@
-<?php include 'root/config.php'; ?>
+<?php 
+include 'root/config.php';
+include 'root/process.php';
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +49,7 @@
                 <div class="card-body">
                   <h5 class="card-title">Drug <span>| <?=$rx->drug_name; ?> @ugx.<?=$rx->drug_selling_price; ?></span></h5>
                   <div class="d-flex align-items-center">
-                  <!-- `order_id`, `drug_id`, `customer_name`, `customer_phone`, `customer_location`, `order_date` -->
+                  <!-- `order_id`, `drug_id`, `customer_name`, `customer_phone`, `customer_location`, `customer_qunatity`, `order_date` -->
                    <form class="" method="POST" action="">
                     <input type="hidden" value="<?=$rx->drug_id; ?>" name="drug_id">
                      <div class="form-group">
@@ -60,6 +63,10 @@
                      <div class="form-group">
                        <label>Customer Location</label>
                        <input type="text" name="customer_location" class="form-control" required>
+                     </div>
+                     <div class="form-group">
+                       <label>Quantity</label>
+                       <input type="text" name="customer_qunatity" class="form-control" required>
                      </div>
                      <br>
                      <div class="form-group">

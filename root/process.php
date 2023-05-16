@@ -109,10 +109,12 @@ if (isset($_POST['login'])) {
 	}
 }elseif(isset($_POST['submit_order_btn'])){
 	trim(extract($_POST));
-	//`order_id`, `drug_id`, `customer_name`, `customer_phone`, `customer_location`, `order_date`
-	$sql = $dbh->query("INSERT INTO orders VALUES(NULL,'$drug_id', '$customer_name','$customer_phone','$customer_location','$today') ");
+	//`order_id`, `drug_id`, `customer_name`, `customer_phone`, `customer_location`, `customer_qunatity`, `order_date`
+	$sql = $dbh->query("INSERT INTO orders VALUES(NULL,'$drug_id', '$customer_name','$customer_phone','$customer_location','$customer_qunatity','$now') ");
 	if ($sql) {
-		
+		$last_id = $dbh->lastInsertId();
+		$_SESSION['id'] = $last_id;
+		header("Location: invoice");
 	}
 }
 

@@ -70,8 +70,7 @@ function log_message($msg=NULL){
 	}
 }
 
-function Batch($numAlpha=8,$numNonAlpha=2)
-{
+function Batch($numAlpha=8,$numNonAlpha=2){
    $listAlpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
    return str_shuffle(
       substr(str_shuffle($listAlpha),0,$numAlpha)
