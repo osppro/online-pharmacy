@@ -29,6 +29,9 @@ $rx = dbRow("SELECT * FROM orders WHERE order_id = '$id' ");
 <div class="row">
 		<div class="col-sm-10 col-sm-offset-1">
 			<div class="widget-box">
+				<div class="">
+					<a href="<?=SITE_URL; ?>" class="btn btn-info"><--Back</a>
+				</div>
 				<div class="widget-header widget-header-large">
 					<h3 class="widget-title grey lighter">
 						<i class="ace-icon fa fa-leaf green"></i>
@@ -50,8 +53,7 @@ $rx = dbRow("SELECT * FROM orders WHERE order_id = '$id' ");
 						</a>
 					</div>
 				</div>
-
-				<div class="widget-body">
+				<div class="widget-body" id="print">
 					<div class="widget-main padding-24">
 						<div class="row">
 							<div class="col-sm-6">
@@ -116,39 +118,28 @@ $rx = dbRow("SELECT * FROM orders WHERE order_id = '$id' ");
 									<tr>
 										<th class="center">#</th>
 										<th>Product</th>
-										<th class="hidden-xs">Description</th>
-										<th class="hidden-480">Discount</th>
+										<th class="hidden-xs">Quantity</th>
+										<th class="hidden-480">Unit Price</th>
 										<th>Total</th>
 									</tr>
 								</thead>
 
 								<tbody>
+								<?php $drug = $dbh->query("SELECT * FROM drug_store WHERE drug_id = '".$rx->drug_id."' ");
+								$x = 1; 
+									while ($rr = $drug->fetch(PDO::FETCH_OBJ)) { ?>
 									<tr>
-										<td class="center">1</td>
-
+										<td class="center"><?=$x++; ?></td>
 										<td>
-											<a href="#">google.com</a>
+											<a href="#"><?=$rr->drug_name; ?></a>
 										</td>
 										<td class="hidden-xs">
-											1 year domain registration
+											<?=$rx->customer_qunatity; ?>
 										</td>
-										<td class="hidden-480"> --- </td>
-										<td>$10</td>
+										<td class="hidden-480"> UGX. <?=$rr->drug_selling_price; ?> </td>
+										<td>UGX. <?=number_format($rr->drug_selling_price*$rx->customer_qunatity); ?></td>
 									</tr>
-
-									<tr>
-										<td class="center">2</td>
-
-										<td>
-											<a href="#">yahoo.com</a>
-										</td>
-										<td class="hidden-xs">
-											5 year domain registration
-										</td>
-										<td class="hidden-480"> 5% </td>
-										<td>$45</td>
-									</tr>
-									
+								<?php } ?>
 								</tbody>
 							</table>
 						</div>
@@ -157,18 +148,18 @@ $rx = dbRow("SELECT * FROM orders WHERE order_id = '$id' ");
 
 						<div class="row">
 							<div class="col-sm-5 pull-right">
+						<?php $drug = $dbh->query("SELECT * FROM drug_store WHERE drug_id = '".$rx->drug_id."' ");
+								while ($rr = $drug->fetch(PDO::FETCH_OBJ)) { ?>
 								<h4 class="pull-right">
 									Total amount :
-									<span class="red">$395</span>
+									<span class="red">UGX. <?=number_format($rr->drug_selling_price*$rx->customer_qunatity); ?></span>
 								</h4>
+							<?php } ?>
 							</div>
-							<div class="col-sm-7 pull-left"> Extra Information </div>
 						</div>
-
 						<div class="space-6"></div>
 						<div class="well">
-							Thank you for choosing Ace Company products.
-							We believe you will be satisfied by our services.
+							Thank you for choosing Online Pharmacy.
 						</div>
 					</div>
 				</div>
