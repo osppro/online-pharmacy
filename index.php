@@ -25,9 +25,60 @@
 </head>
 <body>
   <main>
-    <div class="container">
-      
-    </div>
+    
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+        <div class="col-lg-12 col-md-12">
+          <div class="row">
+
+            <div class="card info-card sales-card bg-primary">
+              <h2 class="text-center text-white">Online Drug Store <span style="float: right; font-size: 14px;"><a href="" class="btn btn-warning">Login</a></span></h2>
+            </div>
+            <!-- Sales Card -->
+
+            <div class="col-xxl-2 col-md-3">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">Drug <span>| Pain Killers</span></h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><a href="">Pain Killers</a></h6>
+                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-xxl-2 col-md-3">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">Drug <span>| Pain Killers</span></h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-people"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6><a href="">Pain Killers</a></h6>
+                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div><!-- End Left side columns -->
+
+      </div>
+    </section>
   </main><!-- End #main -->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   <!-- Vendor JS Files -->
