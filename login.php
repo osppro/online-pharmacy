@@ -51,6 +51,17 @@ include 'root/process.php';//processing data...
                   </div>
                 <!-- `userid`, `name`, `email`, `password`, `u_type`, `date_registered` -->
                   <form class="row g-3 needs-validation" method="POST" action="" novalidate>
+                    <?php 
+                    if (isset($_SESSION['status'])) {
+                      echo $_SESSION['status'];
+                      unset($_SESSION['status']); 
+                    } 
+                    if (isset($_SESSION['loader'])) {
+                      echo $_SESSION['loader'];
+                      unset($_SESSION['loader']); 
+                    } 
+
+                    ?>
                     <div class="col-12">
                       <label for="email" class="form-label">Email</label>
                       <div class="input-group has-validation">

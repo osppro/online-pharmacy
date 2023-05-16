@@ -4,20 +4,26 @@ foreach ($errors as $error) {
 	echo $errors;
 }
 
-if (isset($_POST['login_btn'])) {
+if (isset($_POST['login'])) {
 	trim(extract($_POST));
 	if (count($errors) == 0) {
-	$password = sha1($password);
-	$result = $dbh->query("SELECT * FROM users WHERE phone = '$phone' AND password = '$password' ");
+	$password = md5($password);
+	$result = $dbh->query("SELECT * FROM users WHERE email = '$email' AND password = '$password' ");
 		if ($result->rowCount() == 1) {
-			$rows = $result->fetch(PDO::FETCH_OBJ);
+			$row = $result->fetch(PDO::FETCH_OBJ);
+			// `userid`, `name`, `email`, `password`, `u_type`, `date_registered`
 			$_SESSION['userid'] = $row->userid;
-			$_SESSION['token'] = $row->token;
-			$_SESSION['phone'] = $row->phone;
-			$_SESSION['account_status'] = $row->account_status;
-			$_SESSION['surname'] = $row->surname;
-			$_SESSION['othername'] = $row->othername;
-			
+			$_SESSION['name'] = $row->name;
+			$_SESSION['email'] = $row->email;
+			$_SESSION['u_type'] = $row->u_type;
+			$_SESSION['date_registered'] = $row->date_registered;
+			$_SESSION['status'] = '<div class=" card card-body alert alert-success text-center">
+			Login Successful.</div>';
+			$_SESSION['loader'] = '
+			<div class="spinner-grow bg-primary" role="status">
+			<span class="sr-only"></span></div>';
+
+			header("refresh:2; url=".HOME_URL);
 		}else{
 			$_SESSION['status'] = '<div class=" card card-body alert alert-warning text-center">
 			Invalid account, Try again.</div>';
