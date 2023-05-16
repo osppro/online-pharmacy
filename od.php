@@ -36,11 +36,10 @@
                 Online Drug Store <span style="float: right; font-size: 14px;"><a href="login" class="btn btn-warning">Login</a></span></h2>
             </div>
             <?php 
-            $id = base64_decode($_GET['a']);
-            $cate = $dt = $dbh->query("SELECT * FROM drug_store WHERE drug_id = '$id' ");
-            $rx = $cate->fetch(PDO::FETCH_OBJ);
+              $id = base64_decode($_GET['a']);
+              $cate = $dt = $dbh->query("SELECT * FROM drug_store WHERE drug_id = '$id' ");
+              $rx = $cate->fetch(PDO::FETCH_OBJ);
             ?>
-       
             <!-- Sales Card -->
             <div class="col-lg-12 col-md-12">
               <div class="card info-card sales-card">
