@@ -48,7 +48,7 @@
                      <span style="font-size: 10px; "><?=number_format($drugs);?>-Drugs</span>
                     </div>
                     <div class="ps-3">
-                      <h6><a href=""><?=$row->cat_name; ?></a></h6>
+                      <h6><a href="order?client=<?=base64_encode($row->cat_id); ?>"><?=$row->cat_name; ?></a></h6>
                      </div>
                   </div>
                 </div>
