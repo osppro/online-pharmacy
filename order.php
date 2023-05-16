@@ -32,13 +32,14 @@
         <div class="col-lg-12 col-md-12">
           <div class="row">
             <div class="card info-card sales-card bg-primary">
-              <h2 class="text-center text-white">Online Drug Store <span style="float: right; font-size: 14px;"><a href="login" class="btn btn-warning">Login</a></span></h2>
+              <h2 class="text-center text-white"><span><a style="float: left; font-size: 14px;" class="btn btn-warning" href="<?=SITE_URL; ?>"><<-- Back</a></span> 
+                Online Drug Store <span style="float: right; font-size: 14px;"><a href="login" class="btn btn-warning">Login</a></span></h2>
             </div>
             <?php $cate = $dbh->query("SELECT * FROM category ");
             $x = 1;
             while ($row = $cate->fetch(PDO::FETCH_OBJ)) { ?>
             <!-- Sales Card -->
-            <div class="col-xxl-2 col-md-3">
+            <div class="col-lg-12 col-md-12">
               <div class="card info-card sales-card">
                 <div class="card-body">
                   <h5 class="card-title">Drug Category <span>| <?=$row->cat_name; ?></span></h5>
