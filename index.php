@@ -45,7 +45,8 @@
                   <h5 class="card-title">Drug Category <span>| <?=$row->cat_name; ?></span></h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                     <span style="font-size: 10px; ">@Ugx.10,000</span>
+                    <?php $drugs = $dbh->query("SELECT * FROM drug_store WHERE cat_id = '".$row->cat_id."' ")->rowCount(); ?>
+                     <span style="font-size: 10px; "><?=number_format($drugs);?>-Drugs</span>
                     </div>
                     <div class="ps-3">
                       <h6><a href=""><?=$row->cat_name; ?></a></h6>
