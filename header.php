@@ -208,20 +208,20 @@ if (empty($_SESSION['userid'])) {
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <img src="uploads/avator.png" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2"><?=$name; ?></span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
+              <h6><?=$name; ?></h6>
+              <span>Admin</span>
             </li>
             <li>
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="users-profile">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -230,7 +230,7 @@ if (empty($_SESSION['userid'])) {
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="users-profile">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
@@ -259,23 +259,3 @@ if (empty($_SESSION['userid'])) {
       </ul>
     </nav><!-- End Icons Navigation -->
   </header><!-- End Header -->
-
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
-
-    <ul class="sidebar-nav" id="sidebar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link " href="<?=HOME_URL; ?>">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="">
-          <i class="bi bi-file-earmark"></i>
-          <span>Blank</span>
-        </a>
-      </li><!-- End Blank Page Nav -->
-    </ul>
-  </aside><!-- End Sidebar-->
